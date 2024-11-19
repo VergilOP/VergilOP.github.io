@@ -43,7 +43,7 @@ print("Shakey raw values", shakey)
 
 > Outputs:
 > 
-> ![](../../../assets/img/AI/Computer%20Vision/lab1_1.png)
+> ![](/assets/img/AI/Computer%20Vision/lab1_1.png)
 > 
 > ```
 > Shakey raw values [[254 254 254 ... 131 122 122]
@@ -99,7 +99,7 @@ show_binary_image(threshold_shakey_sobel_x)
 > Boolean Thesholded Image:
 > ```
 > 
-> ![](../../../assets/img/AI/Computer%20Vision/lab1_2.png)
+> ![](/assets/img/AI/Computer%20Vision/lab1_2.png)
 
 ## Task1
 
@@ -130,10 +130,10 @@ show_binary_image(m > 100)
 ```
 > Outputs:
 > 
-> ![](../../../assets/img/AI/Computer%20Vision/lab1_3.png)
-> ![](../../../assets/img/AI/Computer%20Vision/lab1_4.png)
-> ![](../../../assets/img/AI/Computer%20Vision/lab1_5.png)
-> ![](../../../assets/img/AI/Computer%20Vision/lab1_6.png)
+> ![](/assets/img/AI/Computer%20Vision/lab1_3.png)
+> ![](/assets/img/AI/Computer%20Vision/lab1_4.png)
+> ![](/assets/img/AI/Computer%20Vision/lab1_5.png)
+> ![](/assets/img/AI/Computer%20Vision/lab1_6.png)
 
 ## Task 2
 
@@ -162,9 +162,9 @@ show_binary_image(m_roberts > 50)
 
 > Outputs:
 > 
-> ![](../../../assets/img/AI/Computer%20Vision/lab1_7.png)
-> ![](../../../assets/img/AI/Computer%20Vision/lab1_8.png)
-> ![](../../../assets/img/AI/Computer%20Vision/lab1_9.png)
+> ![](/assets/img/AI/Computer%20Vision/lab1_7.png)
+> ![](/assets/img/AI/Computer%20Vision/lab1_8.png)
+> ![](/assets/img/AI/Computer%20Vision/lab1_9.png)
 
 ## Task 3
 
@@ -185,9 +185,9 @@ show_binary_image(m_appr > 40)
 
 > Outputs:
 > 
-> ![](../../../assets/img/AI/Computer%20Vision/lab1_10.png)
-> ![](../../../assets/img/AI/Computer%20Vision/lab1_11.png)
-> ![](../../../assets/img/AI/Computer%20Vision/lab1_12.png)
+> ![](/assets/img/AI/Computer%20Vision/lab1_10.png)
+> ![](/assets/img/AI/Computer%20Vision/lab1_11.png)
+> ![](/assets/img/AI/Computer%20Vision/lab1_12.png)
 
 # Lab 2
 
@@ -219,11 +219,11 @@ show_binary_image(gaussian_5x5_result)
 
 > Outputs:
 > 
-> ![](../../../assets/img/AI/Computer%20Vision/lab2_1.png)
-> ![](../../../assets/img/AI/Computer%20Vision/lab2_2.png)
+> ![](/assets/img/AI/Computer%20Vision/lab2_1.png)
+> ![](/assets/img/AI/Computer%20Vision/lab2_2.png)
 > 
-> ![](../../../assets/img/AI/Computer%20Vision/lab2_3.png)
-> ![](../../../assets/img/AI/Computer%20Vision/lab2_4.png)
+> ![](/assets/img/AI/Computer%20Vision/lab2_3.png)
+> ![](/assets/img/AI/Computer%20Vision/lab2_4.png)
 
 3x3能够保留文字
 
@@ -251,8 +251,8 @@ show_binary_image(gaussian_9x9_result)
 
 > Outputs:
 > 
-> ![](../../../assets/img/AI/Computer%20Vision/lab2_5.png)
-> ![](../../../assets/img/AI/Computer%20Vision/lab2_6.png)
+> ![](/assets/img/AI/Computer%20Vision/lab2_5.png)
+> ![](/assets/img/AI/Computer%20Vision/lab2_6.png)
 
 > > ```py
 > > def sample_gaussian(std_dev,mean,vec):
@@ -306,7 +306,7 @@ show_binary_image(edges)
 
 Outputs:
 
-> ![](../../../assets/img/AI/Computer%20Vision/lab2_7.png)
+> ![](/assets/img/AI/Computer%20Vision/lab2_7.png)
 
 ## Task 5
 
