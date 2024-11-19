@@ -70,9 +70,9 @@ plt.ylabel('Med House Price')
 plt.show()
 ```
 
-![](../../../assets/img/AI/Machine%20Learning/Industrialness%20vs%20Med%20House%20Price.png)
+![](/assets/img/AI/Machine%20Learning/Industrialness%20vs%20Med%20House%20Price.png)
 
-![](../../../assets/img/AI/Machine%20Learning/Avg%20Num%20Rooms%20vs%20Med%20House%20Price.png)
+![](/assets/img/AI/Machine%20Learning/Avg%20Num%20Rooms%20vs%20Med%20House%20Price.png)
 
 ### 1.2 定义一个线性回归模型(Defining a Linear Regression Model)
 
@@ -187,7 +187,7 @@ plt.ylabel("w2")
 plt.plot([-16.44307658], [6.79809451], 'o')
 plt.show()
 ```
-![](../../../assets/img/AI/Machine%20Learning/weight%20space.png)
+![](/assets/img/AI/Machine%20Learning/weight%20space.png)
 
 ### 1.6 精确的解决方法(Exact Solution)
 
@@ -429,7 +429,7 @@ plt.grid()
 plt.show()
 ```
 
-![](../../../assets/img/AI/Machine%20Learning/Comparison%20between%20SGD%20and%20GD.png)
+![](/assets/img/AI/Machine%20Learning/Comparison%20between%20SGD%20and%20GD.png)
 
 ## 3. 感知器(Perceptron)
 
@@ -623,7 +623,7 @@ plt.scatter(X[idx_neg, 0], X[idx_neg, 1], color='red')
 plt.show()
 ```
 
-![](../../../assets/img/AI/Machine%20Learning/Visualization_of_the_dataset.png)
+![](/assets/img/AI/Machine%20Learning/Visualization_of_the_dataset.png)
 
 #### 3.5.3 训练(Train)
 
@@ -666,7 +666,7 @@ plt.plot(x1, x2, color="black", linewidth=2.5, linestyle="-")
 plt.show()
 ```
 
-![](../../../assets/img/AI/Machine%20Learning/Visulation_of_the_perceptron.png)
+![](/assets/img/AI/Machine%20Learning/Visulation_of_the_perceptron.png)
 
 ## 4. 卷积神经网络(Convolutional Neural Network)
 
@@ -736,7 +736,7 @@ imshow(torchvision.utils.make_grid(images))
 print(' '.join('%5s' % classes[labels[j]] for j in range(batch_size)))
 ```
 
-![](../../../assets/img/AI/Machine%20Learning/CNN_training%20images.png)
+![](/assets/img/AI/Machine%20Learning/CNN_training%20images.png)
 
 ### 4.3 定义一个卷积神经网络(Define a Convolutional Neural Network)
 
@@ -975,7 +975,7 @@ from utils.plotting import plot_grid_of_images # Helper functions, use out of th
 plot_grid_of_images(train_imgs[0:100], n_imgs_per_row=10)
 ```
 
-![](../../../assets/img/AI/Machine%20Learning/AE_Train_Imgs.png)
+![](/assets/img/AI/Machine%20Learning/AE_Train_Imgs.png)
 
 ### 5.2 数据预处理(Data pre-processing)
 
@@ -1026,7 +1026,7 @@ One-hot label representation: [ [0. 0. 0. 0. 0. 1. 0. 0. 0. 0.] ]
 '''
 ```
 
-![](../../../assets/img/AI/Machine%20Learning/normalize_imgs.png)
+![](/assets/img/AI/Machine%20Learning/normalize_imgs.png)
 
 #### 5.2.3 将图像从 2D 矩阵展平为 1D 向量。 MLP 将特征向量作为输入，而不是 2D 图像(Flatten the images, from 2D matrices to 1D vectors. MLPs take feature-vectors as input, not 2D images)
 
@@ -1310,9 +1310,9 @@ unsupervised_training_AE(autoencoder_thin,
 '''
 ```
 
-![](../../../assets/img/AI/Machine%20Learning/AE_Train_Grids_Of_Images.png)
+![](/assets/img/AI/Machine%20Learning/AE_Train_Grids_Of_Images.png)
 
-![](../../../assets/img/AI/Machine%20Learning/AE_Train_Loss.png)
+![](/assets/img/AI/Machine%20Learning/AE_Train_Loss.png)
 
 ### 5.5 对潜在(瓶颈)表示中的所有训练样本进行编码(Encode all training samples in the latent (bottleneck) representation)
 
@@ -1389,7 +1389,7 @@ Max Z value per dimension of bottleneck: [87.92656 64.17436]
 '''
 ```
 
-![](../../../assets/img/AI/Machine%20Learning/AE_2d_Embedding.png)
+![](/assets/img/AI/Machine%20Learning/AE_2d_Embedding.png)
 
 ### 5.6 用一个大的瓶颈层训练AE(Train an Auto-Encoder with a larger bottleneck layer)
 
@@ -1431,9 +1431,9 @@ unsupervised_training_AE(autoencoder_wide,
 '''
 ```
 
-![](../../../assets/img/AI/Machine%20Learning/AE_Train_Grids_Of_Images_2.png)
+![](/assets/img/AI/Machine%20Learning/AE_Train_Grids_Of_Images_2.png)
 
-![](../../../assets/img/AI/Machine%20Learning/AE_Train_Loss_2.png)
+![](/assets/img/AI/Machine%20Learning/AE_Train_Loss_2.png)
 
 ### 5.7 基本自动编码器是否适合合成新数据？(Is basic Auto-Encoder appropriate for synthesizing new data?)
 
@@ -1545,9 +1545,9 @@ synthesize(net_decoder_pretrained,
            n_samples=20)
 ```
 
-![](../../../assets/img/AI/Machine%20Learning/AE_Reconstruction_1.png)
+![](/assets/img/AI/Machine%20Learning/AE_Reconstruction_1.png)
 
-![](../../../assets/img/AI/Machine%20Learning/AE_Reconstruction_2.png)
+![](/assets/img/AI/Machine%20Learning/AE_Reconstruction_2.png)
 
 ### 5.8 使用 AE 从未标记数据中学习，以在标记数据有限时补充监督分类器：让我们首先“从头开始”训练一个监督分类器(Learning from Unlabelled data with AE, to complement Supervised Classifier when Labelled data are limited: Lets first train a supervised Classifier 'from scratch')
 
@@ -1760,7 +1760,7 @@ train_classifier(net_classifier_from_scratch,
 '''
 ```
 
-![](../../../assets/img/AI/Machine%20Learning/AE_Training_Loss_Accuracy.png)
+![](/assets/img/AI/Machine%20Learning/AE_Training_Loss_Accuracy.png)
 
 ### 5.9 当标签有限时，使用无监督 AE 作为监督分类器的“预训练特征提取器”(Use Unsupervised AE as 'pre-trained feature-extractor' for a supervised Classifier when labels are limited)
 
@@ -1861,7 +1861,7 @@ train_classifier(classifier_1layer,  # 要训练的单层分类器
 '''
 ```
 
-![](../../../assets/img/AI/Machine%20Learning/AE_Training_Loss_Accuracy_2.png)
+![](/assets/img/AI/Machine%20Learning/AE_Training_Loss_Accuracy_2.png)
 
 ### 5.10 使用无监督 AE 编码器的参数来初始化监督分类器的权重，然后使用有限的标签进行细化(Use parameters of an Unsupervised AE's encoder to initialize weights of a supervised Classifier, followed by refinement using limited labels)
 
@@ -1947,7 +1947,7 @@ train_classifier(classifier_3layers_pretrained,  # classifier that will be train
 '''
 ```
 
-![](../../../assets/img/AI/Machine%20Learning/AE_Training_Loss_Accuracy_3.png)
+![](/assets/img/AI/Machine%20Learning/AE_Training_Loss_Accuracy_3.png)
 
 与`Classifier_1layer`相比，`Classifier_3layers_pretrained`有以下主要区别：
 
@@ -2361,9 +2361,9 @@ unsupervised_training_VAE(vae,
 
 ```
 
-![](../../../assets/img/AI/Machine%20Learning/VAE_unsupervised_training.png)
+![](/assets/img/AI/Machine%20Learning/VAE_unsupervised_training.png)
 
-![](../../../assets/img/AI/Machine%20Learning/VAE_unsupervised_training_progress.png)
+![](/assets/img/AI/Machine%20Learning/VAE_unsupervised_training_progress.png)
 
 ### 6.5 以 Z 表示形式对训练数据进行编码并检查 Encode training data in Z representation and examine
 
@@ -2444,11 +2444,11 @@ encode_training_images(vae,
 
 ```
 
-![](../../../assets/img/AI/Machine%20Learning/VAE_encode_training_1.png)
+![](/assets/img/AI/Machine%20Learning/VAE_encode_training_1.png)
 
-![](../../../assets/img/AI/Machine%20Learning/VAE_encode_training_2.png)
+![](/assets/img/AI/Machine%20Learning/VAE_encode_training_2.png)
 
-![](../../../assets/img/AI/Machine%20Learning/VAE_encode_training_3.png)
+![](/assets/img/AI/Machine%20Learning/VAE_encode_training_3.png)
 
 ### 6.6 仅使用重建损失从任务 1 和 2 训练 VAE Train VAE from Task 1 and 2 only with Reconstruction loss
 
@@ -2473,9 +2473,9 @@ unsupervised_training_VAE(vae_2,
                           iters_per_recon_plot=50)
 ```
 
-![](../../../assets/img/AI/Machine%20Learning/VAE_only_rec_loss_1.png)
+![](/assets/img/AI/Machine%20Learning/VAE_only_rec_loss_1.png)
 
-![](../../../assets/img/AI/Machine%20Learning/VAE_only_rec_loss_2.png)
+![](/assets/img/AI/Machine%20Learning/VAE_only_rec_loss_2.png)
 
 ```py
 # Encode and plot
@@ -2488,11 +2488,11 @@ encode_training_images(vae_2, # The second VAE, trained only with Reconstruction
                        plot_hist_mu_std_for_dim=0)
 ```
 
-![](../../../assets/img/AI/Machine%20Learning/VAE_only_rec_loss_3.png)
+![](/assets/img/AI/Machine%20Learning/VAE_only_rec_loss_3.png)
 
-![](../../../assets/img/AI/Machine%20Learning/VAE_only_rec_loss_4.png)
+![](/assets/img/AI/Machine%20Learning/VAE_only_rec_loss_4.png)
 
-![](../../../assets/img/AI/Machine%20Learning/VAE_only_rec_loss_5.png)
+![](/assets/img/AI/Machine%20Learning/VAE_only_rec_loss_5.png)
 
 ### 6.7 从任务 1 和 2 训练 VAE 以仅最小化正则化器 Train VAE from Task 1 and 2 to minimize only the Regularizer
 
@@ -2517,9 +2517,9 @@ unsupervised_training_VAE(vae_3,
                           iters_per_recon_plot=50)
 ```
 
-![](../../../assets/img/AI/Machine%20Learning/VAE_only_reg_loss_1.png)
+![](/assets/img/AI/Machine%20Learning/VAE_only_reg_loss_1.png)
 
-![](../../../assets/img/AI/Machine%20Learning/VAE_only_reg_loss_2.png)
+![](/assets/img/AI/Machine%20Learning/VAE_only_reg_loss_2.png)
 
 ```py
 # Encode and plot
@@ -2532,11 +2532,11 @@ encode_training_images(vae_3, # The second VAE, trained only with Reconstruction
                        plot_hist_mu_std_for_dim=0)
 ```
 
-![](../../../assets/img/AI/Machine%20Learning/VAE_only_reg_loss_3.png)
+![](/assets/img/AI/Machine%20Learning/VAE_only_reg_loss_3.png)
 
-![](../../../assets/img/AI/Machine%20Learning/VAE_only_reg_loss_4.png)
+![](/assets/img/AI/Machine%20Learning/VAE_only_reg_loss_4.png)
 
-![](../../../assets/img/AI/Machine%20Learning/VAE_only_reg_loss_5.png)
+![](/assets/img/AI/Machine%20Learning/VAE_only_reg_loss_5.png)
 
 ### 6.8 训练具有更大瓶颈层的 VAE Train a VAE with a larger bottleneck layer
 
@@ -2564,9 +2564,9 @@ unsupervised_training_VAE(vae_wide,
 
 ```
 
-![](../../../assets/img/AI/Machine%20Learning/VAE_larger_bottleneck_1.png)
+![](/assets/img/AI/Machine%20Learning/VAE_larger_bottleneck_1.png)
 
-![](../../../assets/img/AI/Machine%20Learning/VAE_larger_bottleneck_2.png)
+![](/assets/img/AI/Machine%20Learning/VAE_larger_bottleneck_2.png)
 
 ### 6.9 使用 VAE 合成（生成）新数据 Synthesizing (generating) new data with a VAE
 
@@ -2601,7 +2601,7 @@ synthesize(vae_wide,
            n_samples=20)
 ```
 
-![](../../../assets/img/AI/Machine%20Learning/VAE_synthesizing.png)
+![](/assets/img/AI/Machine%20Learning/VAE_synthesizing.png)
 
 ### 6.10 对于给定的 x，根据预测的后验 p(z|x) 重建随机样本 For a given x, reconstruct random samples from the predicted posterior p(z|x)
 
@@ -2658,7 +2658,7 @@ sample_variations_of_x(vae_wide,  # The VAE with 32 dimensional Z.
                        n_samples=100)
 ```
 
-![](../../../assets/img/AI/Machine%20Learning/VAE_posterior.png)
+![](/assets/img/AI/Machine%20Learning/VAE_posterior.png)
 
 ### 6.11 在空间 Z 中的 x_1 和 x_2 之间进行插值 Interpolate between x_1 and x_2 in space Z
 
@@ -2729,7 +2729,7 @@ interpolate_between_x1_x2(vae_wide,
                           rng=rng)
 ```
 
-![](../../../assets/img/AI/Machine%20Learning/VAE_encode_training_3.png)
+![](/assets/img/AI/Machine%20Learning/VAE_encode_training_3.png)
 
 ### 6.12 使用 VAE 从未标记数据中学习，以在标记数据有限时补充监督分类器：让我们首先“从头开始”训练一个监督分类器 Learning from Unlabelled data with a VAE, to complement Supervised Classifier when Labelled data are limited: Lets first train a supervised Classifier 'from scratch'
 
@@ -2930,7 +2930,7 @@ train_classifier(net_classifier_from_scratch,
                  iters_per_test=20)
 
 ```
-![](../../../assets/img/AI/Machine%20Learning/VAE_unlabelled_data_scratch.png)
+![](/assets/img/AI/Machine%20Learning/VAE_unlabelled_data_scratch.png)
 
 ### 6.13 当标签有限时，使用预训练的 VAE 作为监督分类器的“特征提取器” Use pre-trained VAE as 'feature-extractor' for supervised Classifier when labels are limited
 
@@ -2993,7 +2993,7 @@ train_classifier(classifier_1layer,
                  iters_per_test=20)
 ```
 
-![](../../../assets/img/AI/Machine%20Learning/VAE_pre-trained_feature-extractor.png)
+![](/assets/img/AI/Machine%20Learning/VAE_pre-trained_feature-extractor.png)
 
 ### 6.14 使用 VAE 编码器的参数来初始化监督分类器的权重，然后使用有限的标签进行细化 Use parameters of VAE's encoder to initialize weights of a supervised Classifier, followed by refine ment using limited labels
 
@@ -3048,7 +3048,7 @@ train_classifier(classifier_3layers_pretrained,  # classifier that will be train
                  iters_per_test=20)
 ```
 
-![](../../../assets/img/AI/Machine%20Learning/VAE_pre-trained_supervised-classifier.png)
+![](/assets/img/AI/Machine%20Learning/VAE_pre-trained_supervised-classifier.png)
 
 ## 7. 生成对抗网络 Generative Adversarial Networks(GANs)
 
@@ -3462,9 +3462,9 @@ unsupervised_training_GAN(generator,
 
 ```
 
-![](../../../assets/img/AI/Machine%20Learning/GAN_Train_1.png)
+![](/assets/img/AI/Machine%20Learning/GAN_Train_1.png)
 
-![](../../../assets/img/AI/Machine%20Learning/GAN_Train_2.png)
+![](/assets/img/AI/Machine%20Learning/GAN_Train_2.png)
 
 ### 7.6 使用 GAN 生成新图像 Generate new images using your GAN
 
@@ -3486,7 +3486,7 @@ def synthesize(generator, n_samples):
 synthesize(generator, 100)
 ```
 
-![](../../../assets/img/AI/Machine%20Learning/GAN_Generate.png)
+![](/assets/img/AI/Machine%20Learning/GAN_Generate.png)
 
 
 ## 8. 循环神经网络 Recurrent Neural Networks(RNN) 
@@ -4477,7 +4477,7 @@ plt.xlabel('Key-index')
 plt.ylabel('Attention-score')
 ```
 
-![](../../../assets/img/AI/Machine%20Learning/AttentionResult.png)
+![](/assets/img/AI/Machine%20Learning/AttentionResult.png)
 
 ```py
 plt.bar(x = np.arange(len(result)), height = result)
@@ -4489,7 +4489,7 @@ Text(0, 0.5, 'Element-value')
 '''
 ```
 
-![](../../../assets/img/AI/Machine%20Learning/AttentionResult_2.png)
+![](/assets/img/AI/Machine%20Learning/AttentionResult_2.png)
 
 ### 9.5 Matrix-based implementation
 
@@ -4524,7 +4524,7 @@ keys_mat.shape
 '''
 ```
 
-![](../../../assets/img/AI/Machine%20Learning/AttentionResult_3.png)
+![](/assets/img/AI/Machine%20Learning/AttentionResult_3.png)
 
 ```py
 plt.bar(x = np.arange(len(result)), height = results[0])
@@ -4536,7 +4536,7 @@ Text(0, 0.5, 'Element-value')
 '''
 ```
 
-![](../../../assets/img/AI/Machine%20Learning/AttentionResult_4.png)
+![](/assets/img/AI/Machine%20Learning/AttentionResult_4.png)
 
 ```py
 attentions = np.zeros((len(keys),len(keys)))
@@ -4570,7 +4570,7 @@ Text(0, 0.5, 'Element-value')
 '''
 ```
 
-![](../../../assets/img/AI/Machine%20Learning/AttentionResult_5.png)
+![](/assets/img/AI/Machine%20Learning/AttentionResult_5.png)
 
 ```py
 attentions, results = maskedAttentionQueryMatrix(queries_mat, keys_mat, values_mat)
@@ -4586,4 +4586,4 @@ keys_mat.shape
 '''
 ```
 
-![](../../../assets/img/AI/Machine%20Learning/AttentionResult_6.png)
+![](/assets/img/AI/Machine%20Learning/AttentionResult_6.png)
