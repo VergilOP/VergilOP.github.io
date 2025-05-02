@@ -105,7 +105,7 @@ $$ acc(f;D) = \frac{1}{m}\sum\limits^m_{i=1}I(f(x_i) = y_i) = 1 - E(f;D) $$
 #### 2.3.2 查准率、查全率与F1
 
 | 真实情况 | 预测结果: 正例 | 预测结果: 反例 |
-|----------|----------------|----------------|
+| -------- | -------------- | -------------- |
 | 正例     | TP             | FN             |
 | 反例     | FP             | TN             |
 
@@ -173,9 +173,9 @@ $$FPR = \frac{FP}{TN + FP}$$
 为权衡不同类型错误所造成的不同损失, 可谓错误赋予"非均等代价"(unequal cost)
 
 | 真实类别 | 预测类别: 第0类 | 预测类别: 第1类 |
-|----------|----------------|----------------|
-| 第0类     | 0             | $cost_{01}$             |
-| 第1类     | $cost_{10}$             | 0             |
+| -------- | --------------- | --------------- |
+| 第0类    | 0               | $cost_{01}$     |
+| 第1类    | $cost_{10}$     | 0               |
 
 在**非均等代价**下，我们所希望的不再是简单的最小化错误次数, 而是希望最小化"总体代价"(total cost). "代价敏感"(cost-sensitive)错误率为:
 
@@ -223,10 +223,10 @@ $$\tau_t = \frac{\sqrt{k}(\mu - \epsilon_0)}{\sigma}$$
 
 ![](https://pic2.zhimg.com/80/v2-a61b0da779db353ec33a1cde707ec041_720w.webp)
 
-| $\alpha$ | k = 2 | k = 5 | k = 10 | k = 20 | k = 30 |
-|----------|----------------|----------------|----------------|----------------|----------------|
-| 0.05     | 12.706 | 2.776 | 2.262 | 2.093 | 2.045 |
-| 0.10     | 6.314 | 2.132 | 1.833 | 1.729 | 1.699 |
+| $\alpha$ | k = 2  | k = 5 | k = 10 | k = 20 | k = 30 |
+| -------- | ------ | ----- | ------ | ------ | ------ |
+| 0.05     | 12.706 | 2.776 | 2.262  | 2.093  | 2.045  |
+| 0.10     | 6.314  | 2.132 | 1.833  | 1.729  | 1.699  |
 
 #### 2.4.2 交叉验证t检验
 
@@ -251,9 +251,9 @@ $$\tau_t = \frac{\sqrt{k}(\mu - \epsilon_0)}{\sigma}$$
 对于二分问题, 使用留出法不仅可估计出学习器A和B的测试错误率, 还可获得两学习器分类结果的差别, 即两者都正确、都错误、一个正确一个错误的样本数:
 
 | 算法B | 算法A: 正确 | 算法A: 错误 |
-|----------|----------------|----------------|
-| 正确     | $e_{00}$   | $e_{01}$   |
-| 错误     | $e_{10}$   | $e_{11}$   |
+| ----- | ----------- | ----------- |
+| 正确  | $e_{00}$    | $e_{01}$    |
+| 错误  | $e_{10}$    | $e_{11}$    |
 
 若我们做的假设是两学习器性能相同, 则应有$e_{01} = e_{10}$, 那么变量$|e_{01} - e_{10}|$应当服从正态分布. McNemar检验考虑变量
 
@@ -265,13 +265,13 @@ $$\tau_{X^2} = \frac{(|e_{01} - e_{10}| - 1)^2}{e_{01} + e_{10}}$$
 
 #### 2.4.4 Friedman检验与Nemenyi后续检验
 
-| 数据集 | 算法A | 算法B | 算法C |
-|----------|----------------|----------------|----------------|
-| $D_1$     | 1 | 2 | 3 |
-| $D_2$     | 1 | 2.5 | 2.5 |
-| $D_3$     | 1 | 2 | 3 |
-| $D_4$     | 1 | 2 | 3 |
-| 平均序值     | 1 | 2.125 | 2.875 |
+| 数据集   | 算法A | 算法B | 算法C |
+| -------- | ----- | ----- | ----- |
+| $D_1$    | 1     | 2     | 3     |
+| $D_2$    | 1     | 2.5   | 2.5   |
+| $D_3$    | 1     | 2     | 3     |
+| $D_4$    | 1     | 2     | 3     |
+| 平均序值 | 1     | 2.125 | 2.875 |
 
 使用Friedman检验来判断这些算法是否性能相同.若相同, 则他们的平均序列应当相同.假定我们在N个数据集上比较k个算法, 令$r_i$表示第i个算法的平均序值, (不考虑平分序值)则$r_i$的均值和方差分别为$(k+1)/2$和$(k^2-1)/12N$. 变量
 
@@ -469,7 +469,7 @@ $$
 
 根据凸优化理论，利用优化算法可得:
 $$
-    \beta^* = \argmin_\beta l(\beta)
+    \beta^* = \argmin\limits_\beta l(\beta)
 $$
 以牛顿法为例:
 $$
@@ -477,6 +477,30 @@ $$
     \frac{\partial\ell(\beta)}{\partial\beta} = - \sum^m_{i = 1} \hat{\vec{x}_i}(y_i - p_1(\hat{\vec{x}_i; \beta}))\\
     \frac{\partial^2\ell(\beta)}{\partial\beta\partial\beta^T} = \sum^m_{i=1}\hat{\vec{x}}_i\hat{\vec{x}}_i^Tp_1(\hat{\vec{x}}_i; \beta)(1 - p_1(\hat{\vec{x}}_i; \beta))
 $$
+
+### 3.4 线性判别分析
+
+![](/assets/img/AI/Machine%20Learning/2024-11-23-11-47-34.png)
+
+欲使同样样例的投影点尽可能接近，可以让同类样例投影点的协方差尽可能小，即
+$\vec{w}^T\sum_0\vec{w} + \vec{w}^T\sum_1\vec{w}$尽可能小
+
+欲使异类样例的投影点尽可能远离，可以让类中心之间的距离尽可能大，即
+$||\vec{w}^T\mu_0 - \vec{w}^T\mu_1||^2_2$尽可能小
+
+$$
+    \begin{aligned}\text{J}&=\frac{\|\boldsymbol{w}^\mathrm{T}\boldsymbol{\mu}_0-\boldsymbol{w}^\mathrm{T}\boldsymbol{\mu}_1\|_2^2}{\boldsymbol{w}^\mathrm{T}\boldsymbol{\Sigma}_0\boldsymbol{w}+\boldsymbol{w}^\mathrm{T}\boldsymbol{\Sigma}_1\boldsymbol{w}}\\&=\frac{\boldsymbol{w}^\mathrm{T}(\boldsymbol{\mu}_0-\boldsymbol{\mu}_1)(\boldsymbol{\mu}_0-\boldsymbol{\mu}_1)^\mathrm{T}\boldsymbol{w}}{\boldsymbol{w}^\mathrm{T}(\boldsymbol{\Sigma}_0+\boldsymbol{\Sigma}_1)\boldsymbol{w}} .\end{aligned}
+$$
+
+定义“类内散度矩阵”(within-class scatter matrix)
+$$
+    \begin{aligned}
+\mathbf{s}_{w}& =\boldsymbol{\Sigma}_0+\boldsymbol{\Sigma}_1 \\
+&=\sum_{x\in X_{0}}\left(\boldsymbol{x}-\boldsymbol{\mu}_{0}\right)\left(\boldsymbol{x}-\boldsymbol{\mu}_{0}\right)^{\mathrm{T}}+\sum_{x\in X_{1}}\left(\boldsymbol{x}-\boldsymbol{\mu}_{1}\right)\left(\boldsymbol{x}-\boldsymbol{\mu}_{1}\right)^{\mathrm{T}}
+\end{aligned}
+$$
+
+
 
 > 参考书籍: 《机器学习》- 周志华著
 {: .prompt-info }
