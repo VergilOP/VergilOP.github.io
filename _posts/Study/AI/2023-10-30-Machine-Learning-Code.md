@@ -1,7 +1,6 @@
 ---
 layout: post
 title: 机器学习:代码 - Machine Learning Code
-author: Ver
 date: 2023-10-30 10:01 +0800
 categories: [Study, AI]
 tags: [machine learning, deep learning]

@@ -1,7 +1,6 @@
 ---
 layout: post
 title: 计算机视觉 - Computer Vision Code
-author: Ver
 date: 2023-10-30 10:01 +0800
 categories: [Study, AI]
 tags: [computer vision, machine learning, deep learning]

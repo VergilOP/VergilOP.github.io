@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Pytorch Code
-author: Ver
 date: 2023-10-31 00:00 +0800
 categories: [Study, AI]
 tags: [machine learning, deep learning]

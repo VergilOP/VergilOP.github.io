@@ -1,7 +1,6 @@
 ---
 layout: post
 title: 机器学习:笔记 - Machine Learning Note
-author: ver
 date: 2023-08-02 21:13 +0100
 categories: [Study, AI]
 tags: [machine learning, deep learning]
