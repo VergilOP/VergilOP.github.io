@@ -271,3 +271,41 @@ Zero-shot or one-shot learning is associated with training on objects and testin
 ### 8.3 Deep Image Prior
 
 It uses a CNN to predict the LR image when downsampled, given some random noise instead of an actual image. Therefore, it follows the strategy of ZSSR by using only the LR image. However, it fixes the input to random noise and applies a fixed downsampling method to the prediction.
+
+## 9 Neural Architecture Search
+
+[▶ Original Report Link](https://ar5iv.labs.arxiv.org/html/2205.07514?_immersive_translate_auto_translate=1)
+
+# Residual Local Feature Network for Efficient Super-Resolution
+
+## 2 Related Work
+
+### 2.1 Efficient Image Super-Resolution
+
+SCRNN applied the deep learning algorithm to the SISR field for the first time. It has three layers and uses bicubic interpolation to upscale the image before the net, causing unnecessary computational cost.
+
+To address this issue, FSRCNN employed the deconvolution layer as the upsampling layer and upscaled the image at the end of net. 
+
+DRCN introduced a deep recursive convolutional network to reduce the number of parameters. 
+
+LapSRN proposed the laplacian pyramid super-resolution block to reconstruct the sub-band residuals of HR images.
+
+CARN proposed an efficient cascading residual network with group convolution, which obtains comparable results against computationally expensive models.
+
+IMDN proposed a lightweight information multi-distillation network by constructing the cascaded information multi-distillation blocks, which extracts hierarchical features step-by-step with the information distillation mechanism (IDM).
+
+RFDN refined the architecture of IMDN and proposed the residual feature distillation network, which replaced IDM with feature distillation connections.
+
+ECBSR proposed an edge-oriented convolutional block based on the reparameterization technique[10], which can improve the learning ability of the model without increasing the inference time.
+
+### 2.2 Train Strategy for PSNR-oriented SISR
+
+These SR networks are usually trained by the ADAM optimizer with standard l1 loss for hundreds of epoches. To improve the robustness of training, they usually adopt a smaller learning rate and patch size.
+
+Recent works on image recognition[3] and optical flow estimation[41] have demonstrated that advanced training strategies can enable older network architectures to match or surpass the performance of novel architectures.
+
+RFDN[31] demonstrated that both fine-tuning the network with l2 loss and initializing a 4x SR model with pretrained 2x model can effectively improve PSNR. 
+
+RRCAN[30] revisited the popular RCAN model and demonstrated that increasing training iterations clearly improves the model performance.
+
+## 3. Method
