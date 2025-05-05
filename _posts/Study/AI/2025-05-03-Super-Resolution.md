@@ -308,4 +308,332 @@ RFDN[31] demonstrated that both fine-tuning the network with l2 loss and initial
 
 RRCAN[30] revisited the popular RCAN model and demonstrated that increasing training iterations clearly improves the model performance.
 
-### 3. Method
+### 3 Method
+
+#### 3.1 Network Architecture
+
+```mermaid
+graph LR
+  A[Input: Low-Resolution Image] --> B[Conv 3×3<br>Shallow Feature Extraction]
+  B --> C1[RLFB Block 1]
+  C1 --> C2[RLFB Block 2]
+  C2 --> C3[RLFB Block 3]
+  C3 --> D[Conv 3×3<br>Post RLFB]
+
+  B -.-> E[Skip Connection]
+  D --> F[Add: Long Residual]
+  E --> F
+
+  F --> G[Conv 3×3<br>Upsample Preparation]
+  G --> H[PixelShuffle<br>Upsampling]
+  H --> I[Output: High-Resolution Image]
+```
+
+#### 3.2 Revisiting the Contrastive Loss
+
+ The contrastive loss is defined as:
+
+#### 3.3 Warm-Start Strategy
+
+For large scale factors like 3 or 4 in the SR task, some previous works use **the 2x model** as **a pre-trained network** instead of training them from scratch.
+
+## Efficient Long-Range Attention Network for Image Super-resolution
+
+[▶ Original Report Link](https://ar5iv.labs.arxiv.org/html/2203.06697?_immersive_translate_auto_translate=1)
+
+### 2 Related work
+
+#### 2.1 CNN-based SR methods
+
+CNN-based methods have demonstrated impressive performance in the SR task. 
+
+To build more effective models for SR, the recently developed methods tend to employ deeper and more complicated architectures as well as the attention techniques.
+
+#### 2.2 Transformer-based SR methods
+
+The breakthrough of transformer networks in natural language processing (NLP) inspired of use of self-attention (SA) in computer vision tasks. The SA mechanism in transformers can effectively model the dependency across data, and it has achieved impressive results on several high-level vision tasks, such as image classification, image detection, and segmentation. 
+
+### 3 Methodology
+
+#### 3.1 Overall Pipeline of ELAN
+
+```mermaid
+graph LR
+    A[Input: Low-Resolution Image] --> B[Conv 3×3<br>Shallow Feature Extraction]
+    B --> C1[ELAB 1]
+    C1 --> C2[ELAB 2]
+    C2 --> C3[ELAB 3]
+    C3 --> C4[ELAB 4]
+    C4 --> C5[ELAB 5]
+    C5 --> D[Conv 3×3<br>Reconstruction]
+    D --> E[PixelShuffle]
+    E --> F[Output: High-Resolution Image]
+```
+
+```mermaid
+graph LR
+    X[Input Feature] --> A1[ShiftConv]
+    A1 --> A2[ReLU]
+    A2 --> A3[ShiftConv]
+    A3 --> A4[GMSA<br>Group-wise Self-Attention]
+    A4 --> Y[Output Feature]
+```
+
+```mermaid
+graph LR
+    G1[Input] --> Split[Split into Groups]
+    Split --> Shift[Shift-Convolution per Group]
+    Shift --> ASA1[ASA Block]
+    Shift --> ASA2[...]
+    ASA1 --> Merge[Concatenate & Merge]
+    Merge --> Out[Output]
+```
+
+#### 3.2 Efficient Long-range Attention Block (ELAB)
+
+```mermaid
+graph TD
+    A[Input] --> Theta_i[Theta_i]
+    A --> G_i[G_i]
+
+    Theta_i --> R1[Reshape]
+    G_i --> R2[Reshape]
+
+    R1 --> M1[Multiplication]
+    R2 --> M1
+
+    M1 --> R3[Reshape]
+
+    Theta_next[Theta_i_plus_n] --> R4[Reshape]
+    G_next[G_i_plus_n] --> R5[Reshape]
+
+    R4 --> M2[Multiplication]
+    R5 --> M2
+
+    M2 --> R6[Reshape]
+
+    R3 --> FinalOut1[Output Part 1]
+    R6 --> FinalOut2[Output Part 2]
+```
+```mermaid
+graph LR
+    A[Input] --> Theta_i[Shared Theta_i]
+    A --> G_i[G_i]
+
+    Theta_i --> R1[Reshape]
+    G_i --> R2[Reshape]
+
+    R1 --> M1[Multiplication]
+    R2 --> M1
+
+    M1 --> R3[Reshape]
+
+    G_next[G_i_plus_n] --> R4[Reshape]
+    R1 --> M2[Multiplication Shared]
+    R4 --> M2
+
+    M2 --> R5[Reshape]
+
+    R3 --> FinalOut1[Output Part 1]
+    R5 --> FinalOut2[Output Part 2]
+```
+
+## ShuffleMixer: An Efficient ConvNet for Image Super-Resolution  
+
+[▶ Original Report Link](https://ar5iv.labs.arxiv.org/html/2205.15175?_immersive_translate_auto_translate=1)
+
+### Proposed Method
+
+We aim to develop an efficient large-kernel CNN model for the SISR task. To meet the efficiency goal, we introduce key designs to the feature mixing block employed to encode information efficiently.
+
+#### 3.1 ShuffleMixer Architecture
+
+```mermaid
+graph LR
+    A[Input Image] --> B[Feature Extraction]
+    B --> C[FMB 1 - Feature Mixing Block]
+    C --> D[FMB 2 - Feature Mixing Block]
+    D --> E[... more FMBs]
+    E --> F[Upsampler - Bilinear Upsampling]
+    F --> G[Conv 3x3 - Reconstruction]
+    G --> H[Output Image]
+
+    %% Optional skip connection
+    A -. Skip Connection .-> H
+```
+
+```mermaid
+graph TD
+    Z0[Input Z0] --> L1[Shuffle Mixer Layer 1]
+    L1 --> L2[Shuffle Mixer Layer 2]
+    L2 --> FMBConv[Conv Layer - FMBConv]
+    FMBConv --> Add[Residual Add with Z0]
+    Add --> Z_out[Output]
+
+    SM_Input[SM Layer Input] --> P1[Channel Projection 1x1]
+    P1 --> DWC[Depthwise Convolution]
+    DWC --> P2[Channel Projection 1x1]
+    P2 --> SM_Output[SM Layer Output]
+
+    Z0_main[Input Feature Z0] --> LN[LayerNorm]
+    LN --> Split[Channel Splitting]
+    Split --> MLP[Point-wise MLP Branch]
+    Split --> ID[Identity Branch]
+    MLP --> Merge1
+    ID --> Merge1
+    Merge1[Channel Shuffle] --> SM2[Next Shuffle Mixer Layer]
+
+    X[Input Tensor] --> C1[Conv 1x1]
+    C1 --> Act[SiLU Activation]
+    Act --> C2[Conv 1x1]
+    C2 --> Out_MLP[Output Tensor]
+
+    X2[Input Tensor] --> F1[Conv 3x3]
+    F1 --> Act2[SiLU Activation]
+    Act2 --> F2[Conv 1x1]
+    F2 --> Out_MB[Output Tensor]
+```
+
+## Omni Aggregation Networks for Lightweight SR
+
+[▶ Original Report Link](https://ar5iv.labs.arxiv.org/html/2304.10244?_immersive_translate_auto_translate=1)
+
+### 3 Methodology
+
+#### 3.1 Attention Mechanisms in Super-Resolution
+
+**Two** attention paradigms are widely adopted in SR to assist in analyzing and aggregating comprehensive patterns.
+
+**Spatial Attention**. Spatial attention can be regarded as an anisotropic selection process. Spatial self-attention and spatial gate are predominantly applied.
+
+**Channel Attention**. There are two categories of channel attention, i.e., scalar-based and covariance-based, proposed to perform channel recalibration or transmit patterns among channels.
+
+#### 3.2 Omni Self-Attention Block
+
+To mine all the correlations hidden in the latent variables, we propose a novel self-attention paradigm called Omni Self-Attention (OSA) block. Unlike existing self-attention paradigms (e.g., spatial self-attention [51, 5, 37]) that only indulge in unidimensional processing, OSA establishes the spatial and channel context simultaneously. 
+
+The proposed OSA calculates the score matrices corresponding to the space and channel direction through sequential matrix operations and rotation
+
+$$\begin{aligned}
+ & Q^{s}=X\cdot W_{q},\quad K^{s}=X\cdot W_{k},\quad V^{s}=X\cdot W_{v}, \\
+ & Y_{s}=\mathcal{A}^{s}(Q^{s},K^{s},V^{s})=\mathrm{SoftMax}(Q^{s}K^{sT})\cdot V^{s}, \\
+ & Q^{c}=\mathcal{R}(Q^{^{\prime}}),K^{c}=\mathcal{R}(K^{^{\prime}}),V^{c}=\mathcal{R}(V^{^{\prime}}), \\
+ & Y_{c}=\mathcal{A}^{c}(Q^{c},K^{c},V^{c})=\mathrm{SoftMax}(K^{c}Q^{cT})\cdot V^{c}, \\
+ & Y_{OSA}=\mathcal{R}^{-1}\left(Y_{c}\right),
+\end{aligned}$$
+
+#### 3.3 Omni-Scale Aggregation Group
+
+OSAG mainly consists of three stages: local, meso and global aggregations.
+
+![](/assets/img/AI/Super%20Resolution/Omni-Scale%20Aggregation%20Group.png)
+
+#### 3.4 Network Architecture
+
+Omni-SR consists of three parts, i.e., **shallow feature extraction**, **deep feature extraction**, and **image reconstruction**.
+
+**Omni-Scale Aggregation Group (OSAG).**
+
+Each OSAG contains **a local convolution block (LCB)**, **a meso-OSA block**, **a global-OSA block**, and **an ESA block**
+
+**Optimization Objective**
+
+Following prior works, we train the model by minimizing a standard $$L_1$$ loss between model prediction $$\hat{I}_{H​R}$$ and HR label $$I_{H​R}$$ as follows:
+
+$$\mathcal{L}=\|I_{HR}-\widehat{I}_{HR}\|_{1}.$$
+
+## Equivalent Transformation and Dual Stream Network Construction for Mobile Image Super-Resolution
+
+[▶ Original Report Link](https://openaccess.thecvf.com/content/CVPR2023/papers/Chao_Equivalent_Transformation_and_Dual_Stream_Network_Construction_for_Mobile_Image_CVPR_2023_paper.pdf)
+
+
+## Table of Reports
+
+Related Search tag in `Google Scholar`:
+
+```
+"image super-resolution" AND ("lightweight" OR "efficient") AND ("dynamic" OR "adaptive") after:2021
+```
+
+| **Title** (with Year)                                                                                    | **Tags**                                                   | **Summary**                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| -------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Lightweight Image Super-Resolution with Adaptive Weighted Learning Network(IMDN) (2019)**              | *Lightweight, Information Distillation, Channel Attention* | IMDN introduces an Information Multi-distillation Network that employs a series of distillation blocks to extract and fuse hierarchical features efficiently. The network utilizes contrast-aware channel attention mechanisms to enhance feature representation, achieving a balance between performance and computational efficiency.                                                                                        |
+| **Exploring Sparsity in Image Super-Resolution for Efficient Inference (SMSR) (2021)**                   | *Sparse Mask, Dynamic Inference, Efficient*                | SMSR introduces a Sparse Mask Super-Resolution network that learns spatial and channel-wise masks to identify and skip redundant computations during inference. While it enhances efficiency by pruning unnecessary operations, the binary nature of the masks limits fine-grained enhancements in complex regions.                                                                                                            |
+| **Dynamic Residual Self-Attention Network for Lightweight Single Image Super-Resolution (DRSAN) (2021)** | *Dynamic, Self-Attention, Lightweight*                     | DRSAN proposes a dynamic residual self-attention mechanism that adaptively adjusts residual connections based on input content. This approach allows the network to modulate feature strength dynamically; however, the overall network structure remains static, lacking dynamic routing capabilities for different content complexities.                                                                                     |
+| **Hitchhiker’s Guide to Super-Resolution: Introduction and Recent Advances (2023)**                      | *Survey, Overview*                                         | Comprehensive survey of deep learning-based SR, covering recent advancements like transformer-based models and diffusion approaches, and discussing remaining challenges (e.g., flexible upsampling, new loss functions, better metrics)..                                                                                                                                                                                     |
+| **Residual Local Feature Network for Efficient SR (RLFN) (2022)**                                        | *Lightweight, Efficient*                                   | Proposes a compact network using only three conv layers for local feature learning, simplifying feature aggregation for a better speed–quality trade-off. With an improved contrastive loss and multi-stage warm-start training, RLFN outperforms prior efficient models in runtime while maintaining high PSNR/SSIM.                                                                                                          |
+| **Efficient Long-Range Attention Network (ELAN) (2022)**                                                 | *Efficient, Attention, Transformer*                        | Introduces an efficient transformer-inspired SR model that reduces self-attention cost. Uses shift convolution to extract local structure and a group-wise multi-scale self-attention (GMSA) module to capture long-range dependencies. An efficient long-range attention block (ELAB), built by combining shift-conv and GMSA with shared attention, achieves transformer-level accuracy with significantly fewer parameters. |
+| **ShuffleMixer: An Efficient ConvNet for SR (2022)**                                                     | *Lightweight, Efficient, ConvNet*                          | Proposes a lightweight SR network with large depth-wise convolutions and channel split-shuffle operations to efficiently enlarge the receptive field. Augments large kernels with fused MobileNet-like convolution blocks to preserve fine details. Experimental results show ShuffleMixer is \~3× smaller (in FLOPs and params) than previous efficient models (e.g., CARN) while achieving competitive performance.          |
+| **Omni-SR: Omni Aggregation Networks for Lightweight SR (2023)**                                         | *Lightweight, Transformer, Multi-scale*                    | Transformer-based framework targeting <1M parameters. Introduces an **Omni Self-Attention (OSA)** block that densely connects spatial and channel attention, simultaneously modeling correlations across spatial and channel dimensions. Also proposes a multi-scale interaction scheme to expand the effective receptive field in shallow models. Omni-SR achieved record-high performance for lightweight SR                 |
+| **ETDS: Equivalent Transformation & Dual-Stream Network for Mobile SR (2023)**                           | *Mobile, Dual-Branch, Efficient*                           | Targets real-time SR on mobile devices. Proposes an **Equivalent Transformation (ET)** technique to convert heavy layers into mobile-friendly ops (reparameterizing into standard conv+ReLU). Builds a dual-stream network to mitigate the extra parameters from ET and enhance feature extraction.                                                                                                                            |
+| **SAFMN: Spatially-Adaptive Feature Modulation for Efficient SR (2023)**                                 |                                                            |                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| **DLGSANet: Dynamic Local/Global Self-Attention Network (2023)**                                         |                                                            |                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| **AsConvSR: Fast SR Network with Assembled Convolutions (2023)**                                         |                                                            |                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| **WBSR: Weight-Balancing for Efficient SR (2024)**                                                       |                                                            |                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| **PCSR: Pixel-Level Classification for SR (2024)**                                                       |                                                            |                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| **LAMNet: Linear Adaptive Mixer Network for SR (2023)**                                                  |                                                            |                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| **FIWHN: Feature Interaction Weighted Hybrid Network (2024)**                                            |                                                            |                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| **TCSR: Transformer-CNN for Lightweight SR (2023)**                                                      |                                                            |                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| **HFFN: High-Frequency Focused Network (2023)**                                                          |                                                            |                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| **RAMiT: Reciprocal Attention Mixing Transformer (2023)**                                                |                                                            |                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| **SCNet: Fully 1×1 Convolutional SR Network (2023)**                                                     |                                                            |                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| **QSRNet: Quick SR Network for Mobile (2023)**                                                           |                                                            |                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| **DITN: Deployment-Friendly Transformer for SR (2023)**                                                  |                                                            |                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| **Dynamic Graph SR via Message Passing & Conv Mixer (2025)**                                             |                                                            |                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| **BSRN: Blueprint Separable Residual Network (2022)**                                                    |                                                            |                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| **ECBSR: Edge-Oriented Convolution Block for Real-Time SR (2022)**                                       |                                                            |                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| **ARM: Any-Time Super-Resolution Method (2022)**                                                         |                                                            |                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| **ADSRNet: Adaptive Heterogeneous CNN for SR (2024)**                                                    |                                                            |                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| **LDEN: Learnable Detail Enhancement Network (2025)**                                                    |                                                            |                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| **Swin2SR: SwinV2 Transformer for Compressed SR (2023)**                                                 |                                                            |                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| **ESRT: Efficient SR Transformer (2022)**                                                                |                                                            |                                                                                                                                                                                                                                                                                                                                                                                                                                |
+|                                                                                                          |                                                            |                                                                                                                                                                                                                                                                                                                                                                                                                                |
+
+## Possible Architecture
+
+```shell
+py -3.11 train2.py --train_dir Data/DIV2K_train_HR --val_dir Data/DIV2K_valid_HR --scale 2 --epochs 100 --batch_size 16 --patch_size 128
+```
+
+### Overall Architecture
+```mermaid
+flowchart TD
+    A[Input LR Image] --> B[Conv 3×3, 3→C channels<br/>+ ReLU]
+    B --> C[Shallow Features F₀]
+    C --> D1[RDB Block 1]
+    D1 --> D2[RDB Block 2]
+    D2 --> D3[…]
+    D3 --> Dn[RDB Block N]
+    Dn --> E[Concat all block outputs]
+    E --> F[Conv 1×1 Fusion → C channels]
+    F --> G[ESA: Spatial Attention]
+    G --> H[Add skip connection<br/>F + F₀]
+    H --> I[Conv 3×3 → 3×scale² channels]
+    I --> J[PixelShuffle ×scale]
+    J --> K[Output HR Image]
+```
+
+### Residual Distillation Block
+
+```mermaid
+flowchart TD
+    X[Input Features X] --> P1[Conv 3×3 → C channels<br/>+ ReLU] 
+    P1 --> P2[Intermediate Feature 1]
+    
+    P2 --> P3[Conv 3×3 → C channels<br/>+ ReLU]
+    P3 --> P4[Intermediate Feature 2]
+    
+    P4 --> P5[Conv 3×3 → C channels<br/>+ ReLU]
+    P5 --> P6[Intermediate Feature 3]
+    
+    subgraph Fuse & Attention
+        P2 --> Q1
+        P4 --> Q1
+        P6 --> Q1
+        Q1[Concat F1,F2,F3] --> R[Conv 1×1 → C channels]
+        R --> S[CALayer: Channel Attention]
+    end
+    
+    S --> T[Add Residual S + X]
+    T --> Y[Output Features]
+```
