@@ -640,13 +640,13 @@ High Preservin Block(HPB)
 
 in HPB, we creatively preserve the High-frequency Filtering Module (HFM) and Adaptive Residual Feature Block (ARFB).
 
-![](../../../assets/img/AI/Super%20Resolution/2025-05-06-12-26-31.png)
+![](/assets/img/AI/Super%20Resolution/2025-05-06-12-26-31.png)
 
 #### 3.2 High-frequency Filtering Module(HFM)
 
 The schematic diagram of the proposed HFM module.
 
-![](../../../assets/img/AI/Super%20Resolution/2025-05-06-12-28-56.png)
+![](/assets/img/AI/Super%20Resolution/2025-05-06-12-28-56.png)
 
 ##### 3.2.1 Adaptive Residual Feature Block(ARFB)
 
@@ -656,9 +656,9 @@ ARFB contains two Residual Units (RUs) and two convolutional layers. To save mem
 
 The complete architecture of the proposed ARFB
 
-![](../../../assets/img/AI/Super%20Resolution/2025-05-06-12-31-42.png)
+![](/assets/img/AI/Super%20Resolution/2025-05-06-12-31-42.png)
 
-![](../../../assets/img/AI/Super%20Resolution/2025-05-06-12-31-50.png)
+![](/assets/img/AI/Super%20Resolution/2025-05-06-12-31-50.png)
 
 #### 3.3 Light weight Transformer Backbone(LTB)
 
@@ -668,7 +668,7 @@ LTB is composed of specially designed Efficient Transformers (ETs), which can ca
 
 ##### 3.3.2 Efficient Transformer (ET)
 
-![](../../../assets/img/AI/Super%20Resolution/2025-05-06-12-37-48.png)
+![](/assets/img/AI/Super%20Resolution/2025-05-06-12-37-48.png)
 
 ## A hybrid of transformer and CNN for efficient single image super-resolution via multi-level distillation
 
@@ -678,7 +678,7 @@ LTB is composed of specially designed Efficient Transformers (ETs), which can ca
 
 our proposed network consists of three parts: 1) shallow feature extraction module, 2) deep feature distillation module, and 3) high-resolution reconstruction module.
 
-![](../../../assets/img/AI/Super%20Resolution/2025-05-06-14-02-37.png)
+![](/assets/img/AI/Super%20Resolution/2025-05-06-14-02-37.png)
 
 ##### 3.1.1 Shallow feature extraction
 
@@ -692,7 +692,7 @@ The deep feature distillation module is our model’s main part, consisting of a
 
 The proposed feature distillation block (TCFDB) consists of hybrid networks of CNN and enhanced Swin Transformer layer (ESTL), convolutional layers, and enhanced spatial attention
 
-![](../../../assets/img/AI/Super%20Resolution/2025-05-06-14-08-53.png)
+![](/assets/img/AI/Super%20Resolution/2025-05-06-14-08-53.png)
 
 ##### 3.2.1 Feature distillation and refinement pipeline
 
@@ -710,7 +710,7 @@ The TCFDB contains two pipelines, i.e., the feature distillation and refinement 
 
 ##### 3.2.3 Enhanced spatial attention block (ESA)
 
-![](../../../assets/img/AI/Super%20Resolution/2025-05-06-14-28-28.png)
+![](/assets/img/AI/Super%20Resolution/2025-05-06-14-28-28.png)
 
 #### 3.3 Image reconstruction module
 
